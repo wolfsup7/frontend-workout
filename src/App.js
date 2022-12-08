@@ -6,7 +6,7 @@ import Add from './components/Add'
 import Edit from './components/Edit'
 
 const App = () => {
-  const [exercises, setExercises] = useState([])
+  const [Exercises, setExercises] = useState([])
 
     const getExercises = () => {
       axios.get('http://localhost:3000/workout')
@@ -45,12 +45,12 @@ const App = () => {
     <>
       <h1><a href='http://localhost:3000/workout'>Swole</a></h1>
       <Add handleCreate={handleCreate}/>
-      {exercises.map((exercise) => {
+      {Exercises.map((exercise) => {
         return (
           <>
-            <Exercise exercise={exercise} />
-            <Edit exercise={exercise} handleEdit={handleEdit}/>
-            <button onClick={handleDelete} value={exercise._id}>X</button>
+            <Exercise exercise={Exercise} />
+            <Edit exercise={Exercise} handleEdit={handleEdit}/>
+            <button onClick={handleDelete} value={Exercise._id}>X</button>
           </>
         )
       })}

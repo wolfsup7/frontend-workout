@@ -1,15 +1,15 @@
 import {useState} from 'react'
 
 const Add = (props) => {
-    const [exercise, setExercise] = useState({name: '', reps: '', muscle: '', tips: '',  image: ''})
+    const [Exercise, setExercise] = useState({Name: '', Reps: '', Muscle: '', Tips: '',  Image: ''})
 
     const handleChange = (event) => {
-    setExercise({...exercise, [event.target.name]: event.target.value})
+    setExercise({...Exercise, [event.target.Name]: event.target.value})
     }
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        props.handleCreate(exercise)
+        props.handleCreate(Exercise)
     }
 
     return(
