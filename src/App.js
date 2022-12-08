@@ -1,16 +1,16 @@
 import {useState, useEffect} from 'react'
 import axios from 'axios'
 
-import Workout from './components/Workout'
+import Exercise from './components/Exercise'
 import Add from './components/Add'
 import Edit from './components/Edit'
 
 const App = () => {
-  const [workouts, setWorkouts] = useState([])
+  const [exercises, setExercises] = useState([])
 
-    const getWorkouts = () => {
+    const getExercises = () => {
       axios.get('http://localhost:3000/workout')
-      .then((response) => setWorkouts(response.data), (err) => console.log(err))
+      .then((response) => setExercises(response.data), (err) => console.log(err))
       .catch((error) => console.log(error))
     }
 
@@ -18,7 +18,7 @@ const App = () => {
       axios.post('http://localhost:3000/workout', data)
       .then((response) => {
           console.log(response)
-          getWorkouts()
+          getExercises()
       })
     }
 
@@ -26,31 +26,31 @@ const App = () => {
       axios.put('http://localhost:3000/workout/' + data._id, data)
       .then((response) => {
         console.log(response)
-        getWorkouts()
+        getExercises()
       })
     }
 
     const handleDelete = (event) => {
       axios.delete('http://localhost:3000/workout/' + event.target.value)
       .then((response) => {
-        getWorkouts()
+        getExercises()
       })
     }
 
   useEffect(() => {
-    getWorkouts()
+    getExercises()
   }, [])
 
   return(
     <>
       <h1><a href='http://localhost:3000/workout'>Swole</a></h1>
       <Add handleCreate={handleCreate}/>
-      {workouts.map((workout) => {
+      {exercises.map((exercise) => {
         return (
           <>
-            <Workout workout={workout} />
-            <Edit workout={workout} handleEdit={handleEdit}/>
-            <button onClick={handleDelete} value={workout._id}>X</button>
+            <Exercise exercise={exercise} />
+            <Edit exercise={exercise} handleEdit={handleEdit}/>
+            <button onClick={handleDelete} value={exercise._id}>X</button>
           </>
         )
       })}

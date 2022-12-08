@@ -1,15 +1,15 @@
 import {useState} from 'react'
 
 const Edit = (props) => {
-    const [workout, setWorkout] = useState({...props.workout})
+    const [exercise, setExercise] = useState({...props.exercise})
 
     const handleChange = (event) => {
-    setWorkout({...workout, [event.target.name]: event.target.value})
+    setExercise({...exercise, [event.target.Name]: event.target.value})
     }
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        props.handleEdit(workout)
+        props.handleEdit(exercise)
     }
 
     return(
@@ -17,22 +17,25 @@ const Edit = (props) => {
         <details>
             <summary>Edit Workout</summary>
             <form onSubmit={handleSubmit}>
-            <label htmlFor='name'>Name:</label>
-            <input type='text' name='name' onChange={handleChange} value={workout.name}/>
+            <label htmlFor='Name'>Name:</label>
+            <input type='text' name='Name' onChange={handleChange} value={exercise.Name}/>
             <br/>
             <br/>
-            <label htmlFor='musclegroup'>Muscle Group:</label>
-            <input type='text' name='muscleGroup' onChange={handleChange} value={workout.muscleGroup}/>
-            <label htmlFor='reps'>Recomended Reps:</label>
-            <input type='text' name='reps' onChange={handleChange} value={workout.reps}/>
-            <label htmlFor='rating'>Rating:</label>
-            <input type='number' name='rating' onChange={handleChange} value={workout.rating}/>
-            <label htmlFor='image'>Image:</label>
-            <input type='text' name='image' onChange={handleChange} value={workout.image}/>
-            <label htmlFor='comments'>Comments:</label>
-            <input type='text' name='comments' onChange={handleChange} value={workout.comments}/>
-            <label htmlFor='tips'>Tips:</label>
-            <input type='text' name='tips' onChange={handleChange} value={workout.tips}/>
+            <label htmlFor='Reps'>Recomended Reps:</label>
+            <input type='Number' name='Reps' onChange={handleChange} value={exercise.Reps}/>
+            <br/>
+            <br/>
+            <label htmlFor='Muscle'>Muscle:</label>
+            <input type='Text' name='Muscle' onChange={handleChange} value={exercise.Muscle}/>
+            <br/>
+            <br/>
+            <label htmlFor='Tips'>Tips:</label>
+            <input type='Text' name='Tips' onChange={handleChange} value={exercise.Tips}/>
+            <br/>
+            <br/>
+            <label htmlFor='Image'>Image:</label>
+            <input type='Text' name='Image' onChange={handleChange} value={exercise.Image}/>
+            <br/>
             <input type="submit"/>
             </form>
         </details>

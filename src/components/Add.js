@@ -1,46 +1,38 @@
 import {useState} from 'react'
 
 const Add = (props) => {
-    const [workout, setWorkout] = useState({name: '', muscleGroup: '', reps: '', rating: 0, image: '', comments: '', tips: ''})
+    const [exercise, setExercise] = useState({name: '', reps: '', muscle: '', tips: '',  image: ''})
 
     const handleChange = (event) => {
-    setWorkout({...workout, [event.target.name]: event.target.value})
+    setExercise({...exercise, [event.target.name]: event.target.value})
     }
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        props.handleCreate(workout)
+        props.handleCreate(exercise)
     }
 
     return(
     <>
         <form onSubmit={handleSubmit}>
-            <label htmlFor='name'>Name:</label>
-            <input type='text' name='name' onChange={handleChange}/>
+            <label htmlFor='Name'>Name:</label>
+            <input type='Text' name='Name' onChange={handleChange}/>
             <br/>
             <br/>
-            <label htmlFor='musclegroup'>Muscle Group:</label>
-            <input type='text' name='muscleGroup' onChange={handleChange}/>
+            <label htmlFor='Reps'>Recomended Reps:</label>
+            <input type='Number' name='Reps' onChange={handleChange}/>
             <br/>
             <br/>
-            <label htmlFor='reps'>Recomended Reps:</label>
-            <input type='text' name='reps' onChange={handleChange}/>
+            <label htmlFor='Muscle'>Muscle:</label>
+            <input type='Text' name='Muscle' onChange={handleChange}/>
             <br/>
             <br/>
-            <label htmlFor='rating'>Rating:</label>
-            <input type='number' name='rating' onChange={handleChange}/>
+            <label htmlFor='Tips'>Tips:</label>
+            <input type='Text' name='Tips' onChange={handleChange}/>
             <br/>
             <br/>
-            <label htmlFor='image'>Image:</label>
-            <input type='text' name='image' onChange={handleChange}/>
-            <br/>
-            <br/>
-            <label htmlFor='comments'>Comments:</label>
-            <input type='text' name='comments' onChange={handleChange}/>
-            <br/>
-            <br/>
-            <label htmlFor='tips'>Tips:</label>
-            <input type='text' name='tips' onChange={handleChange}/>
+            <label htmlFor='Image'>Image:</label>
+            <input type='Text' name='Image' onChange={handleChange}/>
             <br/>
             <br/>
             <input type="submit"/>
