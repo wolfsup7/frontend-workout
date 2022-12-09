@@ -10,13 +10,13 @@ const App = () => {
   const [exercises, setExercises] = useState([])
 
     const getExercises = () => {
-      axios.get('http://localhost:3000/workout')
+      axios.get('mongodb://localhost:27017/swole-api')
       .then((response) => setExercises(response.data), (err) => console.log(err))
       .catch((error) => console.log(error))
     }
 
     const handleCreate = (data) => {
-      axios.post('http://localhost:3000/workout', data)
+      axios.post('mongodb://localhost:27017/swole-api', data)
       .then((response) => {
           console.log(response)
           getExercises()
@@ -24,7 +24,7 @@ const App = () => {
     }
 
     const handleEdit = (data) => {
-      axios.put('http://localhost:3000/workout/' + data._id, data)
+      axios.put('mongodb://localhost:27017/swole-api' + data._id, data)
       .then((response) => {
         console.log(response)
         getExercises()
@@ -32,7 +32,7 @@ const App = () => {
     }
 
     const handleDelete = (event) => {
-      axios.delete('http://localhost:3000/workout/' + event.target.value)
+      axios.delete('mongodb://localhost:27017/swole-api' + event.target.value)
       .then((response) => {
         getExercises()
       })
