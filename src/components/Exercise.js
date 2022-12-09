@@ -11,4 +11,7 @@ const Exercise = (props) => {
     )
 }
 
+
 export default Exercise
+
+
