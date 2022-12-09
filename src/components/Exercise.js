@@ -1,13 +1,18 @@
-
 const Exercise = (props) => {
     return(
-    <>
-        <h3>Name: {props.Ecercise.Name}</h3>
-        <h5>Recommended Reps: {props.Exercise.Reps}</h5>
-        <h4>Muscle: {props.Exercise.Muscle}</h4>
-        <p>Tips: {props.Exercise.Tips}</p>
-        <div>{props.Exercise.Image}</div>
-    </>
+        <div className="card">
+            <div className="card-img-top" alt="...">{props.exercise.image}</div>
+            <div className="card-body">
+                <h5 className="card-title">Name: {props.exercise.name}</h5>
+                <p className="card-text">Muscle: {props.exercise.muscle}</p>
+            </div>
+            <ul className="list-group list-group-flush">
+                <li className="list-group-item">Recommended Reps: {props.exercise.reps}</li>
+            </ul>
+            <div className="card-body">
+                <a href={props.exercise.tips} className="card-link">Tips</a>
+            </div>
+        </div>
     )
 }
 

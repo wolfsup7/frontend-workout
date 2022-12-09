@@ -1,38 +1,38 @@
 import {useState} from 'react'
 
 const Add = (props) => {
-    const [Exercise, setExercise] = useState({Name: '', Reps: '', Muscle: '', Tips: '',  Image: ''})
+    const [exercise, setExercise] = useState({name: '', reps: '', muscle: '', tips: '',  image: ''})
 
     const handleChange = (event) => {
-    setExercise({...Exercise, [event.target.Name]: event.target.value})
+    setExercise({...exercise, [event.target.name]: event.target.value})
     }
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        props.handleCreate(Exercise)
+        props.handleCreate(exercise)
     }
 
     return(
     <>
         <form onSubmit={handleSubmit}>
-            <label htmlFor='Name'>Name:</label>
-            <input type='Text' name='Name' onChange={handleChange}/>
+            <label htmlFor='name'>Name:</label>
+            <input type='text' name='name' onChange={handleChange}/>
             <br/>
             <br/>
-            <label htmlFor='Reps'>Recomended Reps:</label>
-            <input type='Number' name='Reps' onChange={handleChange}/>
+            <label htmlFor='reps'>Recomended Reps:</label>
+            <input type='number' name='reps' onChange={handleChange}/>
             <br/>
             <br/>
-            <label htmlFor='Muscle'>Muscle:</label>
-            <input type='Text' name='Muscle' onChange={handleChange}/>
+            <label htmlFor='muscle'>Muscle:</label>
+            <input type='text' name='muscle' onChange={handleChange}/>
             <br/>
             <br/>
-            <label htmlFor='Tips'>Tips:</label>
-            <input type='Text' name='Tips' onChange={handleChange}/>
+            <label htmlFor='tips'>Tips:</label>
+            <input type='text' name='tips' onChange={handleChange}/>
             <br/>
             <br/>
-            <label htmlFor='Image'>Image:</label>
-            <input type='Text' name='Image' onChange={handleChange}/>
+            <label htmlFor='image'>Image:</label>
+            <input type='text' name='image' onChange={handleChange}/>
             <br/>
             <br/>
             <input type="submit"/>

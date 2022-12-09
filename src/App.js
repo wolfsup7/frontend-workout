@@ -1,12 +1,13 @@
-import {useState, useEffect} from 'react'
-import axios from 'axios'
+import {useState, useEffect} from 'react';
+import axios from 'axios';
 
-import Exercise from './components/Exercise'
-import Add from './components/Add'
-import Edit from './components/Edit'
+import Exercise from './components/Exercise';
+import Add from './components/Add';
+import Edit from './components/Edit';
+import './App.css';
 
 const App = () => {
-  const [Exercises, setExercises] = useState([])
+  const [exercises, setExercises] = useState([])
 
     const getExercises = () => {
       axios.get('http://localhost:3000/workout')
@@ -42,19 +43,21 @@ const App = () => {
   }, [])
 
   return(
-    <>
-      <h1><a href='http://localhost:3000/workout'>Swole</a></h1>
+    <div className="container">
+      <h1>Swole</h1>
       <Add handleCreate={handleCreate}/>
-      {Exercises.map((exercise) => {
+      <div className="card-deck">
+      {exercises.map((exercise) => {
         return (
-          <>
-            <Exercise exercise={Exercise} />
-            <Edit exercise={Exercise} handleEdit={handleEdit}/>
-            <button onClick={handleDelete} value={Exercise._id}>X</button>
-          </>
+          <div className="card">
+            <Exercise exercise={exercise} />
+            <Edit exercise={exercise} handleEdit={handleEdit}/>
+            <button onClick={handleDelete} value={exercise._id}>X</button>
+          </div>
         )
       })}
-    </>
+      </div>
+    </div>
   )
 }
 
