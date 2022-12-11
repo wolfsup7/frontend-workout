@@ -9,33 +9,55 @@ import './App.css';
 const App = () => {
   const [exercises, setExercises] = useState([])
 
+  const [addExercise, setAddExercise] = useState(false)
+
+  const [editExercise, setEditExercise] = useState(false)
+
     const getExercises = () => {
-      axios.get('mongodb://localhost:27017/swole-api')
-      .then((response) => setExercises(response.data), (err) => console.log(err))
+      axios.get('http://localhost:3000/workout')
+      .then((response) => setExercises(response.data))
       .catch((error) => console.log(error))
     }
 
     const handleCreate = (data) => {
-      axios.post('mongodb://localhost:27017/swole-api', data)
+      axios.post('http://localhost:3000/workout', data)
       .then((response) => {
           console.log(response)
-          getExercises()
+          let newExercises = [...exercises, response.data]
+          setExercises(newExercises)
       })
+      setAddExercise(false)
     }
 
     const handleEdit = (data) => {
-      axios.put('mongodb://localhost:27017/swole-api' + data._id, data)
+      axios.put('http://localhost:3000/workout/' + data._id, data)
       .then((response) => {
         console.log(response)
-        getExercises()
+        
+        let newExercises = exercises.map((exercise) => {
+          return exercise._id !== data.id ? exercise : data
+        })
+        setExercises(newExercises)
       })
     }
 
-    const handleDelete = (event) => {
-      axios.delete('mongodb://localhost:27017/swole-api' + event.target.value)
+    const handleDelete = (deletedExercise) => {
+      axios.delete('http://localhost:3000/workout/' + deletedExercise._id)
       .then((response) => {
-        getExercises()
+        
+        let newExercises = exercises.filter((exercise) => {
+          return exercise._id !== deletedExercise._id
+        })
+        setExercises(newExercises)
       })
+    }
+
+    const toggleAddExercise = () => {
+      setAddExercise(prev => !prev)
+    }
+
+    const toggleEditExercise = () => {
+      setEditExercise(prev => !prev)
     }
 
   useEffect(() => {
@@ -43,16 +65,27 @@ const App = () => {
   }, [])
 
   return(
-    <div className="container">
+    <div class="container">
       <h1>Swole</h1>
-      <Add handleCreate={handleCreate}/>
+      <button class="btn btn-warning" onClick={toggleAddExercise}>Add Exercise</button>
+      <div>
+      {
+        addExercise ? <Add handleCreate={handleCreate}/> : null
+      }
+      </div>
+      <br/>
       <div className="card-deck">
       {exercises.map((exercise) => {
         return (
           <div className="card">
-            <Exercise exercise={exercise} />
-            <Edit exercise={exercise} handleEdit={handleEdit}/>
-            <button onClick={handleDelete} value={exercise._id}>X</button>
+            <Exercise exercise={exercise}/>
+            <button class="btn btn-warning" onClick={toggleEditExercise}>Edit</button>
+                    <div>
+                    {
+                    editExercise ? <Edit handleEdit={handleEdit}/> : null
+                    }
+                </div>
+                <button class="btn btn-danger" onClick={()=>{handleDelete(exercise)}}>Delete</button>
           </div>
         )
       })}
