@@ -17,27 +17,27 @@ const Edit = (props) => {
         <details>
             <summary>Edit Workout</summary>
             <form onSubmit={handleSubmit}>
+            <div className="form-group">
             <label htmlFor='name'>Name:</label>
             <input type='text' name='name' onChange={handleChange} value={props.exercise.name}/>
-            <br/>
-            <br/>
+            </div>
+            <div className="form-group">
             <label htmlFor='reps'>Recomended Reps:</label>
             <input type='number' name='reps' onChange={handleChange} value={props.exercise.reps}/>
-            <br/>
-            <br/>
+            </div>
+            <div className="form-group">
             <label htmlFor='muscle'>Muscle:</label>
             <input type='text' name='muscle' onChange={handleChange} value={props.exercise.muscle}/>
-            <br/>
-            <br/>
+            </div>
+            <div className="form-group">
             <label htmlFor='tips'>Tips:</label>
             <input type='text' name='tips' onChange={handleChange} value={props.exercise.tips}/>
-            <br/>
-            <br/>
+            </div>
+            <div className="form-group">
             <label htmlFor='image'>Image:</label>
             <input type='text' name='image' onChange={handleChange} value={props.exercise.image}/>
-            <br/>
-            <br/>
-            <input type="submit"/>
+            </div>
+            <input type="submit" className="btn"/>
             </form>
         </details>
     </>

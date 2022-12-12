@@ -3,7 +3,6 @@ import axios from 'axios';
 
 import Exercise from './components/Exercise';
 import Add from './components/Add';
-import Edit from './components/Edit';
 import './App.css';
 
 const App = () => {
@@ -11,7 +10,6 @@ const App = () => {
 
   const [addExercise, setAddExercise] = useState(false)
 
-  const [editExercise, setEditExercise] = useState(false)
 
     const getExercises = () => {
       axios.get('http://localhost:3000/workout')
@@ -29,63 +27,35 @@ const App = () => {
       setAddExercise(false)
     }
 
-    const handleEdit = (data) => {
-      axios.put('http://localhost:3000/workout/' + data._id, data)
-      .then((response) => {
-        console.log(response)
-        
-        let newExercises = exercises.map((exercise) => {
-          return exercise._id !== data.id ? exercise : data
-        })
-        setExercises(newExercises)
-      })
-    }
 
-    const handleDelete = (deletedExercise) => {
-      axios.delete('http://localhost:3000/workout/' + deletedExercise._id)
-      .then((response) => {
-        
-        let newExercises = exercises.filter((exercise) => {
-          return exercise._id !== deletedExercise._id
-        })
-        setExercises(newExercises)
-      })
-    }
 
     const toggleAddExercise = () => {
       setAddExercise(prev => !prev)
     }
 
-    const toggleEditExercise = () => {
-      setEditExercise(prev => !prev)
-    }
+
 
   useEffect(() => {
     getExercises()
   }, [])
 
   return(
-    <div class="container">
-      <h1>Swole</h1>
-      <button class="btn btn-warning" onClick={toggleAddExercise}>Add Exercise</button>
+    <div className="container">
+      <header className="d-flex p-2 bd-highlight bg-secondary justify-content-around">
+      <img src="./Swole.png" alt="..."/>
+      <button className="btn btn-warning align-self-end" onClick={toggleAddExercise}>Add Exercise</button>
+      </header>
       <div>
       {
         addExercise ? <Add handleCreate={handleCreate}/> : null
       }
       </div>
       <br/>
-      <div className="card-deck">
+      <div className="card-deck" >
       {exercises.map((exercise) => {
         return (
-          <div className="card">
+          <div>
             <Exercise exercise={exercise}/>
-            <button class="btn btn-warning" onClick={toggleEditExercise}>Edit</button>
-                    <div>
-                    {
-                    editExercise ? <Edit handleEdit={handleEdit}/> : null
-                    }
-                </div>
-                <button class="btn btn-danger" onClick={()=>{handleDelete(exercise)}}>Delete</button>
           </div>
         )
       })}
