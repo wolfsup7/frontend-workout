@@ -41,11 +41,11 @@ const App = () => {
       })
     }
 
-    const handleDelete = (deletedExercise) => {
-      axios.delete('http://localhost:3000/workout/' + deletedExercise._id)
+    const handleDelete = (exercise) => {
+      axios.delete('http://localhost:3000/workout/' + exercise._id)
       .then((response) => {
         
-        let newExercises = exercises.filter((exercise) => {
+        let newExercises = exercises.filter((deletedExercise) => {
           return exercise._id !== deletedExercise._id
         })
         setExercises(newExercises)
