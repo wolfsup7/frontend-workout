@@ -33,12 +33,13 @@ const App = () => {
       axios.put('https://swole-seir.herokuapp.com/workout/' + data._id, data)
       .then((response) => {
         console.log(response)
-        
+
         let newExercises = exercises.map((exercise) => {
           return exercise._id !== data.id ? exercise : data
         })
         setExercises(newExercises)
       })
+      setEditExercise(false)
     }
 
     const handleDelete = (exercise) => {
@@ -80,7 +81,11 @@ const App = () => {
           <div className="location-item">
             <Exercise exercise={exercise}/>
             <button class="btn btn-success" onClick={toggleEditExercise}></button>
-            <Edit exercise={exercise} handleEdit={handleEdit}/>
+            <div>
+              {
+              editExercise ? <Edit exercise={exercise} handleEdit={handleEdit}/> : null
+              }
+            </div>
             <button class="btn btn-danger" onClick={()=>{handleDelete(exercise)}}>Delete</button>
           </div>
         )
