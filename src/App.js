@@ -14,13 +14,13 @@ const App = () => {
   const [editExercise, setEditExercise] = useState(false)
 
     const getExercises = () => {
-      axios.get('http://localhost:3000/workout')
-      .then((response) => setExercises(response.data))
+      axios.get('https://swole-seir.herokuapp.com/workout')
+      .then((response) => setExercises(response.data), (err) => console.log(err))
       .catch((error) => console.log(error))
     }
 
     const handleCreate = (data) => {
-      axios.post('http://localhost:3000/workout', data)
+      axios.post('https://swole-seir.herokuapp.com/workout', data)
       .then((response) => {
           console.log(response)
           let newExercises = [...exercises, response.data]
@@ -30,7 +30,7 @@ const App = () => {
     }
 
     const handleEdit = (data) => {
-      axios.put('http://localhost:3000/workout/' + data._id, data)
+      axios.put('https://swole-seir.herokuapp.com/workout/' + data._id, data)
       .then((response) => {
         console.log(response)
         
@@ -41,8 +41,8 @@ const App = () => {
       })
     }
 
-    const handleDelete = (deletedExercise) => {
-      axios.delete('http://localhost:3000/workout/' + deletedExercise._id)
+    const handleDelete = (event) => {
+      axios.delete('https://swole-seir.herokuapp.com/workout/' + event.target.value)
       .then((response) => {
         
         let newExercises = exercises.filter((exercise) => {
@@ -65,17 +65,10 @@ const App = () => {
   }, [])
 
   return(
-    <div class="container">
-      <h1>Swole</h1>
-      <button class="btn btn-warning" onClick={toggleAddExercise}>Add Exercise</button>
-      <div>
-      {
-        addExercise ? <Add handleCreate={handleCreate}/> : null
-      }
-      </div>
-      <br/>
-      <div className="card-deck">
-      {exercises.map((exercise) => {
+    <>
+      <h1><a>Swole</a></h1>
+      <Add handleCreate={handleCreate}/>
+      {Exercises.map((exercise) => {
         return (
           <div className="card">
             <Exercise exercise={exercise}/>
