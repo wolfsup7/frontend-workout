@@ -41,11 +41,11 @@ const App = () => {
       })
     }
 
-    const handleDelete = (event) => {
-      axios.delete('https://swole-seir.herokuapp.com/workout/' + event.target.value)
+    const handleDelete = (exercise) => {
+      axios.delete('http://localhost:3000/workout/' + exercise._id)
       .then((response) => {
         
-        let newExercises = exercises.filter((exercise, deletedExercise) => {
+        let newExercises = exercises.filter((deletedExercise) => {
           return exercise._id !== deletedExercise._id
         })
         setExercises(newExercises)
