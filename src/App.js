@@ -66,19 +66,19 @@ const App = () => {
   }, [])
 
   return(
-    <div class="container">
+    <div className="container">
       <h1>Swole</h1>
-      <button class="btn btn-warning" onClick={toggleAddExercise}>Add Exercise</button>
+      <button className="btn btn-warning" onClick={toggleAddExercise}>Add Exercise</button>
       <div>
       {
         addExercise ? <Add handleCreate={handleCreate}/> : null
       }
       </div>
       <br/>
-      <div className="d-flex flex-wrap justify-content-around">
+      <div className="card-deck">
       {exercises.map((exercise) => {
         return (
-          <div className="location-item">
+          <div className="card">
             <Exercise exercise={exercise}/>
             <button className="btn btn-success" onClick={toggleEditExercise}>Edit</button>
             <div>
