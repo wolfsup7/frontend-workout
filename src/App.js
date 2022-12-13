@@ -38,7 +38,6 @@ const App = () => {
         })
         setExercises(newExercises)
       })
-      setEditExercise(false)
     }
 
     const handleDelete = (exercise) => {
