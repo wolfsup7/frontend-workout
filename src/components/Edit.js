@@ -13,8 +13,7 @@ const Edit = (props) => {
     }
 
     return(
-    <>
-        <details>
+        <>
             <summary>Edit Workout</summary>
             <form onSubmit={handleSubmit}>
             <label htmlFor='name'>Name:</label>
@@ -39,8 +38,7 @@ const Edit = (props) => {
             <br/>
             <input type="submit"/>
             </form>
-        </details>
-    </>
+        </>
     )
 }
 

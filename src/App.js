@@ -80,7 +80,7 @@ const App = () => {
         return (
           <div className="location-item">
             <Exercise exercise={exercise}/>
-            <button class="btn btn-success" onClick={toggleEditExercise}></button>
+            <button class="btn btn-success" onClick={toggleEditExercise}>Edit</button>
             <div>
               {
               editExercise ? <Edit exercise={exercise} handleEdit={handleEdit}/> : null
