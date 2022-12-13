@@ -11,7 +11,6 @@ const App = () => {
 
   const [addExercise, setAddExercise] = useState(false)
 
-  const [editExercise, setEditExercise] = useState(false)
 
     const getExercises = () => {
       axios.get('https://swole-seir.herokuapp.com/workout')
@@ -57,9 +56,6 @@ const App = () => {
       setAddExercise(prev => !prev)
     }
 
-    const toggleEditExercise = () => {
-      setEditExercise(prev => !prev)
-    }
 
   useEffect(() => {
     getExercises()
@@ -80,12 +76,7 @@ const App = () => {
         return (
           <div className="card">
             <Exercise exercise={exercise}/>
-            <button className="btn btn-success" onClick={toggleEditExercise}>Edit</button>
-            <div>
-            {
-              editExercise ? <Edit exercise={exercise} handleEdit={handleEdit}/> : null
-            }
-            </div>
+            <Edit exercise={exercise} handleEdit={handleEdit}/>
             <button className="btn btn-danger" onClick={()=>{handleDelete(exercise)}}>Delete</button>
           </div>
         )
