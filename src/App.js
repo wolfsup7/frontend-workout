@@ -42,7 +42,7 @@ const App = () => {
     }
 
     const handleDelete = (exercise) => {
-      axios.delete('http://localhost:3000/workout/' + exercise._id)
+      axios.delete('https://swole-seir.herokuapp.com/workout/' + exercise._id)
       .then((response) => {
         
         let newExercises = exercises.filter((deletedExercise) => {
