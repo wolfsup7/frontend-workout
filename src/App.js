@@ -79,6 +79,7 @@ const App = () => {
         return (
           <div className="location-item">
             <Exercise exercise={exercise}/>
+            <button class="btn btn-success" onClick={toggleEditExercise}></button>
             <Edit exercise={exercise} handleEdit={handleEdit}/>
             <button class="btn btn-danger" onClick={()=>{handleDelete(exercise)}}>Delete</button>
           </div>
