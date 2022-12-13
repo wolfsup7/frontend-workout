@@ -45,7 +45,7 @@ const App = () => {
       axios.delete('https://swole-seir.herokuapp.com/workout/' + event.target.value)
       .then((response) => {
         
-        let newExercises = exercises.filter((exercise) => {
+        let newExercises = exercises.filter((exercise, deletedExercise) => {
           return exercise._id !== deletedExercise._id
         })
         setExercises(newExercises)
@@ -65,20 +65,22 @@ const App = () => {
   }, [])
 
   return(
-    <>
-      <h1><a>Swole</a></h1>
-      <Add handleCreate={handleCreate}/>
-      {Exercises.map((exercise) => {
+    <div class="container">
+      <h1>Swole</h1>
+      <button class="btn btn-warning" onClick={toggleAddExercise}>Add Exercise</button>
+      <div>
+      {
+        addExercise ? <Add handleCreate={handleCreate}/> : null
+      }
+      </div>
+      <br/>
+      <div className="d-flex flex-wrap justify-content-around">
+      {exercises.map((exercise) => {
         return (
-          <div className="card">
+          <div className="location-item">
             <Exercise exercise={exercise}/>
-            <button class="btn btn-warning" onClick={toggleEditExercise}>Edit</button>
-                    <div>
-                    {
-                    editExercise ? <Edit handleEdit={handleEdit}/> : null
-                    }
-                </div>
-                <button class="btn btn-danger" onClick={()=>{handleDelete(exercise)}}>Delete</button>
+            <Edit exercise={exercise} handleEdit={handleEdit}/>
+            <button class="btn btn-danger" onClick={()=>{handleDelete(exercise)}}>Delete</button>
           </div>
         )
       })}
