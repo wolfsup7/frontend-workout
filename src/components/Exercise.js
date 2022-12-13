@@ -3,7 +3,7 @@ const Exercise = (props) => {
 
 
     return(
-        <div className="card">
+        <div>
             <img className="card-img-top bg-info text-white" alt="..." src={props.exercise.image}></img>
             <div className="card-body">
                 <h5 className="card-title">Name: {props.exercise.name}</h5>
