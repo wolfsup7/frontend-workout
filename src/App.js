@@ -14,7 +14,7 @@ const App = () => {
 
     const getExercises = () => {
       axios.get('https://swole-seir.herokuapp.com/workout')
-      .then((response) => setExercises(response.data), (err) => console.log(err))
+      .then((response) => setExercises(response.data))
       .catch((error) => console.log(error))
     }
 
@@ -34,7 +34,7 @@ const App = () => {
         console.log(response)
 
         let newExercises = exercises.map((exercise) => {
-          return exercise._id !== data.id ? exercise : data
+          return exercise._id !== data._id ? exercise : data
         })
         setExercises(newExercises)
       })
@@ -70,7 +70,7 @@ const App = () => {
       }
       </div>
       <br/>
-      <div className="card-deck">
+      <div>
       {exercises.map((exercise) => {
         return (
           <div className="card">
