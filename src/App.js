@@ -14,13 +14,13 @@ const App = () => {
   const [editExercise, setEditExercise] = useState(false)
 
     const getExercises = () => {
-      axios.get('http://localhost:3000/workout')
-      .then((response) => setExercises(response.data))
+      axios.get('https://swole-seir.herokuapp.com/workout')
+      .then((response) => setExercises(response.data), (err) => console.log(err))
       .catch((error) => console.log(error))
     }
 
     const handleCreate = (data) => {
-      axios.post('http://localhost:3000/workout', data)
+      axios.post('https://swole-seir.herokuapp.com/workout', data)
       .then((response) => {
           console.log(response)
           let newExercises = [...exercises, response.data]
@@ -30,7 +30,7 @@ const App = () => {
     }
 
     const handleEdit = (data) => {
-      axios.put('http://localhost:3000/workout/' + data._id, data)
+      axios.put('https://swole-seir.herokuapp.com/workout/' + data._id, data)
       .then((response) => {
         console.log(response)
         
@@ -74,18 +74,14 @@ const App = () => {
       }
       </div>
       <br/>
-      <div className="card-deck">
+      <div className="d-flex flex-wrap justify-content-around">
       {exercises.map((exercise) => {
         return (
-          <div className="card">
+          <div className="location-item">
             <Exercise exercise={exercise}/>
-            <button class="btn btn-warning" onClick={toggleEditExercise}>Edit</button>
-                    <div>
-                    {
-                    editExercise ? <Edit handleEdit={handleEdit}/> : null
-                    }
-                </div>
-                <button class="btn btn-danger" onClick={()=>{handleDelete(exercise)}}>Delete</button>
+            <button class="btn btn-success" onClick={toggleEditExercise}></button>
+            <Edit exercise={exercise} handleEdit={handleEdit}/>
+            <button class="btn btn-danger" onClick={()=>{handleDelete(exercise)}}>Delete</button>
           </div>
         )
       })}
