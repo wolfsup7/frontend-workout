@@ -61,7 +61,7 @@ const App = () => {
   }, [])
 
   return(
-    <div className="container">
+    <div className="container-fluid">
       <h1>Swole</h1>
       <button className="btn btn-warning" onClick={toggleAddExercise}>Add Exercise</button>
       <div>
