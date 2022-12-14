@@ -62,10 +62,13 @@ const App = () => {
 
   return(
     <div className="container-fluid">
-      <div className="header">
-      <h1>Swole</h1>
-      <button className="btn btn-warning" onClick={toggleAddExercise}>Add Exercise</button>
-    </div>
+    <nav className="navbar navbar-light bg-light">
+      <a className="navbar-brand" href="https://swole-workout.herokuapp.com">
+      <img src="./public/logo.png" alt="" className='logo'/>
+      Swole
+      </a>
+    <button className="btn btn-warning" onClick={toggleAddExercise}>Add Exercise</button>
+    </nav>
       <div>
       {
         addExercise ? <Add handleCreate={handleCreate}/> : null
