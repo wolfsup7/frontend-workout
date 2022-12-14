@@ -51,9 +51,9 @@ const App = () => {
     //   })
     // }
 
-    // const toggleAddExercise = () => {
-    //   setAddExercise(prev => !prev)
-    // }
+      const toggleAddExercise = () => {
+        setAddExercise(prev => !prev)
+      }
 
 
   useEffect(() => {
