@@ -70,7 +70,7 @@ const App = () => {
       }
       </div>
       <br/>
-      <div className="card-deck">
+      <div>
       {exercises.map((exercise) => {
         return (
           <div className="card">
