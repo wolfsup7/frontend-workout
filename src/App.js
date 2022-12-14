@@ -73,10 +73,12 @@ const App = () => {
       <div>
       {exercises.map((exercise) => {
         return (
+          <div className="card-deck">
           <div className="card">
             <Exercise exercise={exercise}/>
             <Edit exercise={exercise} handleEdit={handleEdit}/>
             <button className="btn btn-danger" onClick={()=>{handleDelete(exercise)}}>Delete</button>
+          </div>
           </div>
         )
       })}
