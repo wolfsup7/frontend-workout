@@ -39,11 +39,7 @@
 
 .card {
   width: 18rem;
+  margin: 4rem;
+  align-self: center;
 }
 
-.logo {
-  height: 30;
-  width: 30;
-  display: inline-block;
-  box-align: top;
-}
