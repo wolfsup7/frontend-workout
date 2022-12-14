@@ -19,23 +19,23 @@ const Edit = (props) => {
             <form onSubmit={handleSubmit}>
             <div className="form-group">
                 <label htmlFor='name'>Name:</label>
-                <input type='text' className="form-control" name='name' onChange={handleChange} value={props.exercise.name}/>
+                <input type='text' className="form-control" name='name' onChange={handleChange} value={exercise.name}/>
             </div>
             <div className="form-group">
                 <label htmlFor='reps'>Recomended Reps:</label>
-                <input type='text' name='reps' onChange={handleChange} value={props.exercise.reps}/>
+                <input type='text' name='reps' onChange={handleChange} value={exercise.reps}/>
             </div>
             <div className="form-group">
                 <label htmlFor='muscle'>Muscle:</label>
-                <input type='text' className= "form-control" name='muscle' onChange={handleChange} value={props.exercise.muscle}/>
+                <input type='text' className= "form-control" name='muscle' onChange={handleChange} value={exercise.muscle}/>
             </div>
             <div className="form-group">
                 <label htmlFor='tips'>Tips:</label>
-                <input type='text' className="form-control" name='tips' onChange={handleChange} value={props.exercise.tips}/>
+                <input type='text' className="form-control" name='tips' onChange={handleChange} value={exercise.tips}/>
             </div>
             <div className="form-group">
                 <label htmlFor='image'>Image:</label>
-                <input type='text' className="form-control" name='image' onChange={handleChange} value={props.exercise.image}/>
+                <input type='text' className="form-control" name='image' onChange={handleChange} value={exercise.image}/>
             </div>
             <input type="submit"/>
             </form>
