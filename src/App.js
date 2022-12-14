@@ -62,8 +62,10 @@ const App = () => {
 
   return(
     <div className="container-fluid">
+      <div className="header">
       <h1>Swole</h1>
       <button className="btn btn-warning" onClick={toggleAddExercise}>Add Exercise</button>
+    </div>
       <div>
       {
         addExercise ? <Add handleCreate={handleCreate}/> : null
