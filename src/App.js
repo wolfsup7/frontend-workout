@@ -64,9 +64,9 @@ const App = () => {
     <div className="container-fluid">
     <nav className="navbar navbar-light bg-light">
       <a className="navbar-brand" href="https://swole-workout.herokuapp.com">
-      <h1>Swole</h1>
+      <h1 className="text-info">Swole</h1>
       </a>
-    <button className="btn btn-warning" onClick={toggleAddExercise}>Add Exercise</button>
+    <button className="btn btn-outline-primary" onClick={toggleAddExercise}>Add Exercise</button>
     </nav>
       <div>
       {
@@ -74,10 +74,10 @@ const App = () => {
       }
       </div>
       <br/>
-      <div>
+      <div className="d-flex justify-content-around flex-wrap">
       {exercises.map((exercise) => {
         return (
-          <div className="card">
+          <div className="card bg-light border-info">
             <Exercise exercise={exercise}/>
             <Edit exercise={exercise} handleEdit={handleEdit}/>
             <button className="btn btn-danger" onClick={()=>{handleDelete(exercise)}}>Delete</button>

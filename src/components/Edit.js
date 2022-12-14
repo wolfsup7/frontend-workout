@@ -14,7 +14,7 @@ const Edit = (props) => {
 
     return(
         <>
-        <details>
+        <details className="btn btn-warning">
             <summary>Edit</summary>
             <form onSubmit={handleSubmit}>
             <div className="form-group">
