@@ -9,7 +9,7 @@ const Exercise = (props) => {
                 <h5 className="card-title">Name: {props.exercise.name}</h5>
                 <p className="card-text">Muscle: {props.exercise.muscle}</p>
                 <p className="card-text">Recommended Reps: {props.exercise.reps}</p>
-                <a className="btn btn-primary" href={props.exercise.tips}>Tips</a>
+                <a className="btn btn-info" href={props.exercise.tips}>Tips</a>
             </div>
         </div>
     )

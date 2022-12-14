@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import Exercise from './components/Exercise';
 import Add from './components/Add';
-import Edit from './components/Edit';
+// import Edit from './components/Edit';
 import './App.css';
 
 const App = () => {
@@ -66,7 +66,7 @@ const App = () => {
       <a className="navbar-brand" href="https://swole-workout.herokuapp.com">
       <h1 className="text-info">Swole</h1>
       </a>
-    <button className="btn btn-outline-primary" onClick={toggleAddExercise}>Add Exercise</button>
+    <button className="btn btn-outline-info" onClick={toggleAddExercise}>Add Exercise</button>
     </nav>
       <div>
       {
