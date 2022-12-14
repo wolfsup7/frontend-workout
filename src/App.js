@@ -28,32 +28,32 @@ const App = () => {
       setAddExercise(false)
     }
 
-    const handleEdit = (data) => {
-      axios.put('https://swole-seir.herokuapp.com/workout/' + data._id, data)
-      .then((response) => {
-        console.log(response)
+    // const handleEdit = (data) => {
+    //   axios.put('https://swole-seir.herokuapp.com/workout/' + data._id, data)
+    //   .then((response) => {
+    //     console.log(response)
 
-        let newExercises = exercises.map((exercise) => {
-          return exercise._id !== data._id ? exercise : data
-        })
-        setExercises(newExercises)
-      })
-    }
+    //     let newExercises = exercises.map((exercise) => {
+    //       return exercise._id !== data._id ? exercise : data
+    //     })
+    //     setExercises(newExercises)
+    //   })
+    // }
 
-    const handleDelete = (exercise) => {
-      axios.delete('https://swole-seir.herokuapp.com/workout/' + exercise._id)
-      .then((response) => {
+    // const handleDelete = (exercise) => {
+    //   axios.delete('https://swole-seir.herokuapp.com/workout/' + exercise._id)
+    //   .then((response) => {
         
-        let newExercises = exercises.filter((deletedExercise) => {
-          return exercise._id !== deletedExercise._id
-        })
-        setExercises(newExercises)
-      })
-    }
+    //     let newExercises = exercises.filter((deletedExercise) => {
+    //       return exercise._id !== deletedExercise._id
+    //     })
+    //     setExercises(newExercises)
+    //   })
+    // }
 
-    const toggleAddExercise = () => {
-      setAddExercise(prev => !prev)
-    }
+    // const toggleAddExercise = () => {
+    //   setAddExercise(prev => !prev)
+    // }
 
 
   useEffect(() => {
@@ -79,8 +79,8 @@ const App = () => {
         return (
           <div className="card bg-light border-info">
             <Exercise exercise={exercise}/>
-            <Edit exercise={exercise} handleEdit={handleEdit}/>
-            <button className="btn btn-danger" onClick={()=>{handleDelete(exercise)}}>Delete</button>
+            {/* <Edit exercise={exercise} handleEdit={handleEdit}/>
+            <button className="btn btn-danger" onClick={()=>{handleDelete(exercise)}}>Delete</button> */}
           </div>
         )
       })}
