@@ -64,7 +64,7 @@ const App = () => {
     <div className="container-fluid">
     <nav className="navbar navbar-light bg-light">
       <a className="navbar-brand" href="https://swole-workout.herokuapp.com">
-      <img src="./public/logo.png" alt="" className='logo'/>
+      <img src="./src/logo.png" alt="" className='logo'/>
       Swole
       </a>
     <button className="btn btn-warning" onClick={toggleAddExercise}>Add Exercise</button>
