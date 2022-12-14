@@ -73,7 +73,7 @@ const App = () => {
       <div>
       {exercises.map((exercise) => {
         return (
-          <div className="card-deck">
+          <div className="card-group">
           <div className="card">
             <Exercise exercise={exercise}/>
             <Edit exercise={exercise} handleEdit={handleEdit}/>
