@@ -20,7 +20,7 @@ const Add = (props) => {
             <br/>
             <br/>
             <label htmlFor='reps'>Recomended Reps:</label>
-            <input type='number' name='reps' onChange={handleChange}/>
+            <input type='text' name='reps' onChange={handleChange}/>
             <br/>
             <br/>
             <label htmlFor='muscle'>Muscle:</label>

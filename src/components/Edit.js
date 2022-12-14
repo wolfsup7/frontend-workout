@@ -23,7 +23,7 @@ const Edit = (props) => {
             </div>
             <div className="form-group">
                 <label htmlFor='reps'>Recomended Reps:</label>
-                <input type='number' name='reps' onChange={handleChange} value={props.exercise.reps}/>
+                <input type='text' name='reps' onChange={handleChange} value={props.exercise.reps}/>
             </div>
             <div className="form-group">
                 <label htmlFor='muscle'>Muscle:</label>
