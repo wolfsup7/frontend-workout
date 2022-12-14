@@ -70,15 +70,13 @@ const App = () => {
       }
       </div>
       <br/>
-      <div>
+      <div className="card-deck">
       {exercises.map((exercise) => {
         return (
-          <div className="card-group">
           <div className="card">
             <Exercise exercise={exercise}/>
             <Edit exercise={exercise} handleEdit={handleEdit}/>
             <button className="btn btn-danger" onClick={()=>{handleDelete(exercise)}}>Delete</button>
-          </div>
           </div>
         )
       })}
