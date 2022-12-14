@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
 import axios from 'axios';
-
+import Search from './components/Search'
 import Exercise from './components/Exercise';
 import Add from './components/Add';
 import Edit from './components/Edit';
@@ -12,6 +12,7 @@ const App = () => {
   const [addExercise, setAddExercise] = useState(false)
 
 
+//routes
     const getExercises = () => {
       axios.get('https://swole-seir.herokuapp.com/workout')
       .then((response) => setExercises(response.data))
@@ -51,6 +52,7 @@ const App = () => {
       })
     }
 
+
     const toggleAddExercise = () => {
       setAddExercise(prev => !prev)
     }
@@ -68,6 +70,10 @@ const App = () => {
       </a>
     <button className="btn btn-outline-primary" onClick={toggleAddExercise}>Add Exercise</button>
     </nav>
+    <br/>
+    <div>
+      <Search exercises={exercises} />
+    </div>
       <div>
       {
         addExercise ? <Add handleCreate={handleCreate}/> : null
